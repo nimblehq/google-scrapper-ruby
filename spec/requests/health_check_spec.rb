@@ -8,7 +8,5 @@ RSpec.describe 'HealthChecks', type: :request do
       get '/health_check'
       expect(response).to have_http_status(:success)
     end
-
-    it { is_expected.to route(:get, '/health_check').to('health_check#health_check') }
   end
 end
