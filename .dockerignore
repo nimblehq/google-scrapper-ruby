@@ -3,6 +3,7 @@
 .semaphore-cache
 log/
 tmp/
+!tmp/docker
 coverage/
 node_modules/
 docker-compose.dev.yml
