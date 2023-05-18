@@ -86,4 +86,5 @@ Rails.application.configure do
     Bullet.add_footer    = true
   end
   
+  config.hosts << ENV['DEPLOYED_HOST']
 end
