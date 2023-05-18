@@ -26,4 +26,4 @@ console_command = "/rails/bin/rails console"
     protocol = "http"
 
 [env]
-    DEPLOYED_HOST = "google-scrapper-ruby.fly.dev"
+  DEPLOYED_HOST = "google-scrapper-ruby.fly.dev"
