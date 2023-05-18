@@ -41,9 +41,9 @@ jobs:
         run: |
           if [[ $BRANCH_TAG = "latest" ]]
           then
-            echo "HEROKU_APP=google_scrapper_ruby" >> $GITHUB_ENV
+            echo "HEROKU_APP=google-scrapper-ruby" >> $GITHUB_ENV
           else
-            echo "HEROKU_APP=google_scrapper_ruby-staging" >> $GITHUB_ENV
+            echo "HEROKU_APP=google-scrapper-ruby-staging" >> $GITHUB_ENV
           fi
 
       - name: Login to Docker registry
