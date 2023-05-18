@@ -27,3 +27,4 @@ console_command = "/rails/bin/rails console"
 
 [env]
   DEPLOYED_HOST = "google-scrapper-ruby.fly.dev"
+  PORT = 3000
