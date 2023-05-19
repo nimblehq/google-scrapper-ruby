@@ -10,12 +10,22 @@ jobs:
     name: Deploy app
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Build Docker image
-      run: bin/docker-prepare && docker compose build
-   
-    - uses: superfly/flyctl-actions/setup-flyctl@master
-    - run: flyctl deploy
-    env:
-        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      - uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: |
+          bin/docker-prepare &&
+          docker compose build \
+            --build-arg BUILD_ENV=production \
+            --build-arg RUBY_ENV=production \
+            --build-arg APP_HOME=/google_scrapper_ruby \
+            --build-arg NODE_ENV=production \
+            --build-arg ASSET_HOST=http://localhost
+
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy to Fly.io
+        run: flyctl deploy
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
