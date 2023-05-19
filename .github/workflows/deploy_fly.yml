@@ -9,6 +9,19 @@ jobs:
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
+    env:
+      DOCKER_REGISTRY_HOST: ${{ secrets.DOCKER_REGISTRY_HOST }}
+      DOCKER_REGISTRY_USERNAME: ${{ github.repository_owner }}
+      DOCKER_REGISTRY_TOKEN: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
+      DOCKER_IMAGE: ${{ github.repository }}
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      DEPLOYED_HOST: "google-scrapper-ruby.fly.dev"
+      PORT: 3000
+      ASSET_HOST: ""
+      BUILD_ENV: "production"
+      NODE_ENV: "production"
+      RUBY_ENV: "production"
+
     steps:
       - uses: actions/checkout@v3
 
