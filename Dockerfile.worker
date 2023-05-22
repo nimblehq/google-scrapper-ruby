@@ -1,5 +1,5 @@
 ARG DOCKER_REGISTRY_HOST=docker.io
-ARG DOCKER_IMAGE=nimblehq/google_scrapper_ruby
+ARG DOCKER_IMAGE=mosharaf13/google_scrapper_ruby
 ARG BRANCH_TAG=latest
 FROM ${DOCKER_REGISTRY_HOST}/${DOCKER_IMAGE}:${BRANCH_TAG}
 
