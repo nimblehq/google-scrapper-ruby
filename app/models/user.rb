@@ -4,6 +4,8 @@ class User < ApplicationRecord
   include Authenticable
   PASSWORD_PATTERN = /(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}/
 
+  before_validation :password_complexity, on: :create
+
   def password_complexity
     return if password.match?(PASSWORD_PATTERN)
 
