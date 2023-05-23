@@ -20,7 +20,7 @@
             <div> Welcome <%= current_user.email %> </div> 
             <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %> 
           <% else %>
-            <%= button_to "Sign in", new_user_session_path, class: "btn btn-outline-light" %> 
+            <%= button_to "Sign in", new_user_session_path, method: :get, class: "btn btn-outline-light" %> 
           <% end %>
         </div>
       </div>
