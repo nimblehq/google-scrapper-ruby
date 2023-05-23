@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class SearchStatsController < ApplicationController
+  include Pagy::Backend
+
   # GET /search_stats
   def index
-    @search_stats = SearchStat.all
+    @pagy, @search_stats = pagy(SearchStat.all)
   end
 end
