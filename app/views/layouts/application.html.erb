@@ -8,11 +8,35 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-</head>
+  </head>
 
   <body>
-    <p class="notice"><%= notice %></p> 
-    <p class="alert"><%= alert %></p> 
-    <%= yield %>
+    <header class="p-3 text-bg-dark">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <%= link_to "Google Scrapper", root_url, class: "navbar-brand col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" %>
+
+          <% if user_signed_in? %> 
+            <div> Welcome <%= current_user.email %> </div> 
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %> 
+          <% else %>
+            <%= button_to "Sign in", new_user_session_path, class: "btn btn-outline-light" %> 
+          <% end %>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-shrink-0">
+      <div class="container">
+        <% if notice %>
+          <p class="notice alert alert-info"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
