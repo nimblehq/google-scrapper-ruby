@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require 'fabrication'
+
+# Generate dummy data for SearchStat
+10.times do
+  Fabricate(:search_stat)
+end
