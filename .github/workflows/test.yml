@@ -15,6 +15,7 @@ env:
   DOCKER_IMAGE: ${{ github.repository }}
   NODE_VERSION: 16
 
+
   # Set the default docker-compose file
   COMPOSE_FILE: docker-compose.test.yml
 
@@ -45,13 +46,6 @@ jobs:
       - name: Pull Docker image
         if: ${{ env.BRANCH_TAG != 'latest' && env.BRANCH_TAG != 'development' }}
         run: docker-compose pull test || true
-
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.0.1'
-
-      - name: install gems
-        run: bundle install
         
       - name: Build Docker image
         run: bin/docker-prepare && docker-compose build && bin/docker-assets-precompile
