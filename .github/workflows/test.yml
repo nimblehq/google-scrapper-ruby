@@ -46,8 +46,12 @@ jobs:
         if: ${{ env.BRANCH_TAG != 'latest' && env.BRANCH_TAG != 'development' }}
         run: docker-compose pull test || true
 
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.0.1'
+
       - name: Build Docker image
-        run: bin/docker-prepare && docker-compose build
+        run: bin/docker-prepare && docker-compose build && bin/docker-assets-precompile
 
       - name: Push Docker image
         run: docker-compose push test
