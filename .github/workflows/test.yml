@@ -50,6 +50,9 @@ jobs:
         with:
           ruby-version: '3.0.1'
 
+      - name: install gems
+        run: bundle install
+        
       - name: Build Docker image
         run: bin/docker-prepare && docker-compose build && bin/docker-assets-precompile
 
