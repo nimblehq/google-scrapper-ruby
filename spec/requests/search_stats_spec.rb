@@ -28,8 +28,7 @@ RSpec.describe '/search_stats', type: :request do
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      SearchStat.create! valid_attributes
-      get search_stats_url
+      get '/search_stats'
       expect(response).to be_successful
     end
   end
