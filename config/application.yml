@@ -23,3 +23,4 @@ test:
 docker_build:
   <<: *default
   SECRET_KEY_BASE: dummy_secret_key_base
+  RAILS_SERVE_STATIC_FILES: true
