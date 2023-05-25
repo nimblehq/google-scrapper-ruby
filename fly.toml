@@ -26,9 +26,9 @@ console_command = "/rails/bin/rails console"
     protocol = "http"
     
 [env]
-  DEPLOYED_HOST: "google-scrapper-ruby.fly.dev"
-  PORT: 3000
-  ASSET_HOST: ""
-  BUILD_ENV: "production"
-  NODE_ENV: "production"
-  RUBY_ENV: "production"
+  DEPLOYED_HOST = "google-scrapper-ruby.fly.dev"
+  PORT = 3000
+  ASSET_HOST = ""
+  BUILD_ENV = "production"
+  NODE_ENV = "production"
+  RUBY_ENV = "production"
