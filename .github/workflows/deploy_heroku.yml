@@ -1,18 +1,23 @@
 name: Deploy Heroku
 
+# on:
+#   workflow_run:
+#     workflows:
+#       - Test
+#     branches:
+#       - master
+#       - main
+#       - develop
+#       - chore/check-prod-deploy-issue
+#     types:
+#       - completed
+#   workflow_dispatch:
 on:
-  workflow_run:
-    workflows:
-      - Test
-    branches:
+  push:
+    branches-ignore:
       - master
       - main
-      - develop
       - chore/check-prod-deploy-issue
-    types:
-      - completed
-  workflow_dispatch:
-
 env:
   DOCKER_REGISTRY_HOST: ${{ secrets.DOCKER_REGISTRY_HOST }}
   DOCKER_REGISTRY_USERNAME: ${{ github.repository_owner }}
