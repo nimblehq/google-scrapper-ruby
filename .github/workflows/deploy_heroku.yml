@@ -8,6 +8,7 @@ on:
       - master
       - main
       - develop
+      - chore/check-prod-deploy-issue
     types:
       - completed
   workflow_dispatch:
