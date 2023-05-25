@@ -7,7 +7,7 @@ services:
   - type: web
     name: mysite
     env: ruby
-    buildCommand: "bin/docker-prepare && docker-compose build"
+    buildCommand: "bin/bundle install"
     startCommand: "/bin/sh -c ./bin/start.sh"
     envVars:
       - key: DATABASE_URL
@@ -16,3 +16,6 @@ services:
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
+      - key: PORT
+        value: 80
+        
