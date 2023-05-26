@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   before_validation :password_complexity, on: :create
 
+  private
+  
   def password_complexity
     return if password.match?(PASSWORD_PATTERN)
 
