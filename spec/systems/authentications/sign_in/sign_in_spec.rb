@@ -27,7 +27,7 @@ describe 'Sign in page', type: :system do
         visit new_user_session_path
         user = Fabricate(:user, password: 'password')
 
-        submit_authentication_form(user.email, 'invalidemail')
+        submit_authentication_form(user.email, 'invalid')
 
         expect(page).to have_current_path(new_user_session_path)
       end
@@ -36,7 +36,7 @@ describe 'Sign in page', type: :system do
         visit new_user_session_path
         user = Fabricate(:user, password: 'password')
 
-        submit_authentication_form(user.email, 'invalidemail')
+        submit_authentication_form(user.email, 'invalid')
 
         within selectors[:auth_form] do
           expect(page).to have_text "Your email address or password is incorrect."
