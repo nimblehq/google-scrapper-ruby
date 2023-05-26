@@ -18,9 +18,9 @@
 
           <% if user_signed_in? %> 
             <div class="me-3"> Welcome <%= current_user.email %> </div> 
-            <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %> 
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-light sign-out-button" %> 
           <% else %>
-            <%= button_to "Sign in", new_user_session_path, method: :get, class: "btn btn-outline-light" %> 
+            <%= button_to "Sign in", new_user_session_path, method: :get, class: "btn btn-outline-light sign-in-button" %> 
           <% end %>
         </div>
       </div>
