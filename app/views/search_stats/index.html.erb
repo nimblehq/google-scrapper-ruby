@@ -1,9 +1,7 @@
 <h1>Search stats</h1>
 
 <div id="search_stats">
-  <% @search_stats.each do |search_stat| %>
-    <%= render search_stat %>
-  <% end %>
+  <%= render @search_stats %>
 </div>
 
 <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
