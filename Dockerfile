@@ -52,7 +52,6 @@ RUN if [ "$BUILD_ENV" = "test" ]; then \
 
 WORKDIR $APP_HOME
 
-
 # Skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
 	&& { \
