@@ -14,6 +14,7 @@ env:
   DOCKER_REGISTRY_TOKEN: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
   DOCKER_IMAGE: ${{ github.repository }}
   NODE_VERSION: 16
+  PORT: ${{secrets.PORT}}
 
   # Set the default docker-compose file
   COMPOSE_FILE: docker-compose.test.yml
@@ -45,7 +46,7 @@ jobs:
       - name: Pull Docker image
         if: ${{ env.BRANCH_TAG != 'latest' && env.BRANCH_TAG != 'development' }}
         run: docker-compose pull test || true
-        
+
       - name: Build Docker image
         run: bin/docker-prepare && docker-compose build
 
