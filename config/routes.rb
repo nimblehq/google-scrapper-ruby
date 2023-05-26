@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   root "home#index"
   
   get "/health_check", to: 'health_check#health_check', as: :rails_health_check
-  get "/search_stats", to: 'search_stats#index', as: :stats_stats_list
+  get "/search_stats", to: 'search_stats#index'
 end
