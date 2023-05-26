@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - develop
+      - chore/check-prod-deploy-issue
 env:
   DOCKER_REGISTRY_HOST: ${{ secrets.DOCKER_REGISTRY_HOST }}
   DOCKER_REGISTRY_USERNAME: ${{ github.repository_owner }}
