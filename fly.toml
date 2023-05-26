@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for google-scrapper-ruby on 2023-05-26T15:23:00+07:00
+# fly.toml app configuration file generated for google-scrapper-ruby on 2023-05-26T16:03:28+07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,14 +7,23 @@ app = "google-scrapper-ruby"
 primary_region = "sin"
 console_command = "/rails/bin/rails console"
 
-[build]
-   [build.args]
-     BUILD_COMMAND = "bin/rails fly:build"
-     SERVER_COMMAND = "bin/rails fly:server"
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
 
-[deploy]
-    release_command = "bin/rails fly:release"
-
+[checks]
+  [checks.status]
+    port = 3000
+    type = "http"
+    interval = "10s"
+    timeout = "2s"
+    grace_period = "5s"
+    method = "GET"
+    path = "/health_check"
+    protocol = "http"
 [env]
     ASSET_HOST = ""
     DEPLOYED_HOST = "google-scrapper-ruby.fly.dev"
@@ -22,54 +31,3 @@ console_command = "/rails/bin/rails console"
     NODE_ENV = "production"
     PORT = "8080"
     RUBY_ENV = "production"
-
-[experimental]
-    auto_rollback = true
-
-[http_service]
-  internal_port = 8080
-  processes = ["web"]
-  force_https = true
-  [http_service.concurrency]
-    type = "requests"
-    soft_limit = 20
-    hard_limit = 25
-
-[processes]
-  web = "bin/rails fly:server"
-  worker = "bundle exec sidekiq"
-
-[[services]]
-  http_checks = []
-  internal_port = 8080
-  processes = ["web"]
-  protocol = "tcp"
-  script_checks = []
-    [services.concurrency]
-      hard_limit = 25
-      soft_limit = 20
-      type = "connections"
-
-    [[services.ports]]
-      force_https = true
-      handlers = ["http"]
-      port = 80
-
-    [[services.ports]]
-      handlers = ["tls", "http"]
-      port = 443
-
-[checks]
-  [checks.alive]
-    type = "tcp"
-    interval = "15s"
-    timeout = "2s"
-    grace_period = "5s"
-  [checks.listening]
-    grace_period = "10s"
-    interval = "30s"
-    method = "get"
-    path = "/health_check"
-    port = 8080
-    timeout = "10s"
-    type = "http"
