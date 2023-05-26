@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  search_stat:
+    keyword: 'Keyword'
+    ad_count: 'Ad count'
+    link_count: 'Link count'
+    total_result_count: 'Total result count'
+    raw_response: 'Raw response'
+    user: 'User'
