@@ -45,6 +45,7 @@ jobs:
       - name: Pull Docker image
         if: ${{ env.BRANCH_TAG != 'latest' && env.BRANCH_TAG != 'development' }}
         run: docker-compose pull test || true
+        
       - name: Build Docker image
         run: bin/docker-prepare && docker-compose build
 
