@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for google-scrapper-ruby on 2023-05-26T16:03:28+07:00
+# fly.toml app configuration file generated for google-scrapper-ruby on 2023-05-18T11:25:54+07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -8,7 +8,7 @@ primary_region = "sin"
 console_command = "/rails/bin/rails console"
 
 [http_service]
-  internal_port = 3000
+  internal_port = 80
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
@@ -16,7 +16,7 @@ console_command = "/rails/bin/rails console"
 
 [checks]
   [checks.status]
-    port = 3000
+    port = 80
     type = "http"
     interval = "10s"
     timeout = "2s"
@@ -24,10 +24,11 @@ console_command = "/rails/bin/rails console"
     method = "GET"
     path = "/health_check"
     protocol = "http"
+
 [env]
-    ASSET_HOST = ""
-    DEPLOYED_HOST = "google-scrapper-ruby.fly.dev"
-    BUILD_ENV = "production"
-    NODE_ENV = "production"
-    PORT = "8080"
-    RUBY_ENV = "production"
+  DEPLOYED_HOST = "google-scrapper-ruby.fly.dev"
+  PORT = 80
+  ASSET_HOST = ""
+  BUILD_ENV = "production"
+  NODE_ENV = "production"
+  RUBY_ENV = "production"
