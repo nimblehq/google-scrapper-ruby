@@ -10,7 +10,7 @@ ARG ASSET_HOST=http://localhost
 ENV BUILD_ENV=$BUILD_ENV \
     RACK_ENV=$RUBY_ENV \
     RAILS_ENV=$RUBY_ENV \
-    PORT=3000 \
+    PORT=80 \
     BUNDLE_JOBS=4 \
     BUNDLE_PATH="/bundle" \
     ASSET_HOST=$ASSET_HOST \
@@ -23,7 +23,6 @@ ENV BUILD_ENV=$BUILD_ENV \
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends apt-transport-https curl gnupg net-tools && \
     apt-get install -y --no-install-recommends build-essential libpq-dev && \
-    apt-get install -y --no-install-recommends rsync locales chrpath pkg-config libfreetype6 libfontconfig1 git cmake wget unzip nginx && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -52,8 +51,6 @@ RUN if [ "$BUILD_ENV" = "test" ]; then \
 
 WORKDIR $APP_HOME
 
-# Nginx config
-COPY config/nginx/app.conf.template /etc/nginx/conf.d/default.conf
 
 # Skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
