@@ -30,11 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   search_stat:
-    keyword: 'Keyword'
     ad_count: 'Ad count'
+    keyword: 'Keyword'
     link_count: 'Link count'
-    total_result_count: 'Total result count'
     raw_response: 'Raw response'
+    title: 'Search stats'
+    total_result_count: 'Total result count'
     user: 'User'
