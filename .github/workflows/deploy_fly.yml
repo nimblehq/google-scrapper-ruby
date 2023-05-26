@@ -1,20 +1,28 @@
 name: Deploy Fly
 
+# on:
+#   workflow_run:
+#     workflows:
+#       - Test
+#     branches:
+#       - master
+#       - main
+#       - development
+     
+#     types:
+#       - completed
+#   workflow_dispatch:
+
 on:
-  workflow_run:
-    workflows:
-      - Test
-    branches:
+  push:
+    branches-ignore:
       - master
       - main
-      - development
       - chore/check-prod-deploy-issue
-    types:
-      - completed
-  workflow_dispatch:
-
+    
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  BUILD_ENV: 'production'
 
 jobs:
   deploy:
