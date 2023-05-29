@@ -65,3 +65,6 @@ yarn-error.log*
 
 # Ignore Gemfile.lock file in engines.
 /engines/*/Gemfile.lock
+
+# Ignore vendor
+/vendor
