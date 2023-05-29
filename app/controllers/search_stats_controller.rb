@@ -3,7 +3,7 @@
 class SearchStatsController < ApplicationController
   # GET /search_stats
   def index
-    @pagy, @search_stats = pagy(SearchStat.all, items: 8)
+    @pagy, @search_stats = pagy(SearchStat.all)
   end
 
   def show
