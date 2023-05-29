@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <div class="d-flex flex-wrap align-items-center">
+    <div class="mr-auto mb-2">
+      <%= link_to search_stats_path, class: "btn btn-primary m-1" do %>
+        Back
+      <% end %>
+    </div>
+    <h4 class="mb-2"><%= I18n.t('search_stat.title') %></h4>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Search Stat Details</h5>
+
+      <p class="card-text">
+        <strong><%= I18n.t('search_stat.keyword') %>:</strong>
+        <%= @search_stat.keyword %>
+      </p>
+
+      <p class="card-text">
+        <strong><%= I18n.t('search_stat.ad_count') %>:</strong>
+        <%= @search_stat.ad_count %>
+      </p>
+
+      <p class="card-text">
+        <strong><%= I18n.t('search_stat.link_count') %>:</strong>
+        <%= @search_stat.link_count %>
+      </p>
+
+      <p class="card-text">
+        <strong><%= I18n.t('search_stat.total_result_count') %>:</strong>
+        <%= @search_stat.total_result_count %>
+      </p>
+
+      <p class="card-text">
+        <strong><%= I18n.t('search_stat.raw_response') %>:</strong>
+        <%= @search_stat.raw_response %>
+      </p>
+
+      <p class="card-text">
+        <strong><%= I18n.t('search_stat.user') %>:</strong>
+        <%= @search_stat.user_id %>
+      </p>
+    </div>
+  </div>
+</div>

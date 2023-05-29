@@ -11,10 +11,23 @@
           <th scope="col"><%= I18n.t('search_stat.total_result_count') %></th>
           <th scope="col"><%= I18n.t('search_stat.raw_response') %></th>
           <th scope="col"><%= I18n.t('search_stat.user') %></th>
+          <th scope="col"></th> <!-- Add an empty column for the button -->
         </tr>
       </thead>
       <tbody>
-        <%= render @search_stats %>
+        <% @search_stats.each do |search_stat| %>
+          <tr>
+            <td><%= search_stat.keyword %></td>
+            <td><%= search_stat.ad_count %></td>
+            <td><%= search_stat.link_count %></td>
+            <td><%= search_stat.total_result_count %></td>
+            <td><%= search_stat.raw_response %></td>
+            <td><%= search_stat.user_id %></td>
+            <td>
+              <%= link_to 'Show', search_stat_path(search_stat), class: 'btn btn-primary' %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
