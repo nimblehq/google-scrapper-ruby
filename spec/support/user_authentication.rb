@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-def login_as_user(user = Fabricate(:user))
+def login_as(user = Fabricate(:user))
   sign_in user
 end
