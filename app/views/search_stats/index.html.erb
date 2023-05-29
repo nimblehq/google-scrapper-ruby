@@ -1,7 +1,23 @@
-<h1><%= I18n.t('search_stat.title')%></h1>
+<div class="container mt-4">
+  <h4><%= I18n.t('search_stat.title') %></h4>
 
-<div id="search_stats">
-  <%= render @search_stats %>
+  <div id="search_stats" class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col"><%= I18n.t('search_stat.keyword') %></th>
+          <th scope="col"><%= I18n.t('search_stat.ad_count') %></th>
+          <th scope="col"><%= I18n.t('search_stat.link_count') %></th>
+          <th scope="col"><%= I18n.t('search_stat.total_result_count') %></th>
+          <th scope="col"><%= I18n.t('search_stat.raw_response') %></th>
+          <th scope="col"><%= I18n.t('search_stat.user') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @search_stats %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= render partial: 'pagination' %>
 </div>
-
-<%== pagy_nav(@pagy) if @pagy.pages > 1 %>

@@ -1,31 +1,8 @@
-<div id="<%= dom_id search_stat %>">
-  <p>
-    <strong><%= I18n.t('search_stat.keyword')%>:</strong>
-    <%= search_stat.keyword %>
-  </p>
-
-  <p>
-    <strong><%= I18n.t('search_stat.ad_count')%>:</strong>
-    <%= search_stat.ad_count %>
-  </p>
-
-  <p>
-    <strong><%= I18n.t('search_stat.link_count')%>:</strong>
-    <%= search_stat.link_count %>
-  </p>
-
-  <p>
-    <strong><%= I18n.t('search_stat.total_result_count')%>:</strong>
-    <%= search_stat.total_result_count %>
-  </p>
-
-  <p>
-    <strong><%= I18n.t('search_stat.raw_response')%>:</strong>
-    <%= search_stat.raw_response %>
-  </p>
-
-  <p>
-    <strong><%= I18n.t('search_stat.user')%>:</strong>
-    <%= search_stat.user_id %>
-  </p>
-</div>
+<tr id="<%= dom_id search_stat %>">
+  <td><%= search_stat.keyword %></td>
+  <td><%= search_stat.ad_count %></td>
+  <td><%= search_stat.link_count %></td>
+  <td><%= search_stat.total_result_count %></td>
+  <td><%= search_stat.raw_response %></td>
+  <td><%= search_stat.user_id %></td>
+</tr>
