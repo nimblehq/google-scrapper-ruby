@@ -15,12 +15,7 @@
 
     <main class="flex-shrink-0">
       <div class="container mt-5">
-        <% if notice %>
-          <p class="notice alert alert-info"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="alert alert-danger"><%= alert %></p>
-        <% end %>
+        <%= render 'shared/flashes' %>
 
         <%= yield %>
       </div>
