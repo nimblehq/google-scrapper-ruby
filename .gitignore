@@ -67,3 +67,6 @@ yarn-error.log*
 /engines/*/Gemfile.lock
 
 .env
+
+# Add vendor
+/vendor
