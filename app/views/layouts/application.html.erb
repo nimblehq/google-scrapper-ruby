@@ -11,20 +11,7 @@
   </head>
 
   <body>
-    <header class="p-3 text-bg-dark">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <%= link_to 'Google Scrapper', root_url, class: 'navbar-brand col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0' %>
-
-          <% if user_signed_in? %> 
-            <div class="me-3"> Welcome <%= current_user.email %> </div> 
-            <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-light sign-out-button' %> 
-          <% else %>
-            <%= button_to 'Sign in', new_user_session_path, method: :get, class: 'btn btn-outline-light sign-in-button' %> 
-          <% end %>
-        </div>
-      </div>
-    </header>
+    <%= render 'shared/header' %>
 
     <main class="flex-shrink-0">
       <div class="container mt-5">
