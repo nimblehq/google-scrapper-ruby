@@ -15,19 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @search_stats.each do |search_stat| %>
-          <tr>
-            <td><%= search_stat.keyword %></td>
-            <td><%= search_stat.ad_count %></td>
-            <td><%= search_stat.link_count %></td>
-            <td><%= search_stat.total_result_count %></td>
-            <td><%= search_stat.raw_response %></td>
-            <td><%= search_stat.user_id %></td>
-            <td>
-              <%= link_to 'Show', search_stat_path(search_stat), class: 'btn btn-primary' %>
-            </td>
-          </tr>
-        <% end %>
+        <%= render @search_stats %>
       </tbody>
     </table>
   </div>
