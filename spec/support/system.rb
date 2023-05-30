@@ -2,6 +2,8 @@
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do
+    config.include Warden::Test::Helpers, type: :system
+
     # use headless_chrome, by default
     driven_by :headless_chrome
 
