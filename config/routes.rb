@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "home#index"
 
+  resources :search_stats, only: [:new, :create]
+
   get "/health_check", to: 'health_check#health_check', as: :rails_health_check
 end
