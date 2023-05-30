@@ -67,3 +67,5 @@ yarn-error.log*
 /engines/*/Gemfile.lock
 
 .env
+
+/vendor
