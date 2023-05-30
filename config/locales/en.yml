@@ -38,6 +38,8 @@ en:
     link_count: 'Link count'
     non_ad_count: 'Non ad count'
     raw_response: 'Raw response'
+    search_button_text: 'Search'
+    search_placeholder: 'Enter keyword'
     title: 'Search stats'
     total_result_count: 'Total result count'
     user: 'User'
