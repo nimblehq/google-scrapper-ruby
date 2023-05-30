@@ -15,7 +15,7 @@ describe 'Sign in page', type: :system do
     context 'given the credentials are valid' do
       it 'displays the home page' do
         visit new_user_session_path
-        user = Fabricate.build(:user)
+        user = Fabricate(:user)
         submit_authentication_form(user.email, user.password)
 
         expect(page).to have_current_path(root_path)
@@ -29,7 +29,7 @@ describe 'Sign in page', type: :system do
 
         submit_authentication_form(user.email, 'invalid')
 
-        expect(page).to have_current_path(root_path)
+        expect(page).to have_current_path(new_user_session_path)
       end
 
       it 'shows the error message' do
