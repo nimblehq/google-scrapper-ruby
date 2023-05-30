@@ -3,6 +3,18 @@
   <td><%= search_stat.ad_count %></td>
   <td><%= search_stat.link_count %></td>
   <td><%= search_stat.total_result_count %></td>
-  <td><%= search_stat.raw_response %></td>
-  <td><%= search_stat.user_id %></td>
+  <td>
+    <%= button_to 'Show Details', search_stat_path(search_stat), method: :get, class: 'btn btn-primary' %>
+  </td>
 </tr>
+
+
+<script>
+  function openRawResponse(rawResponse) {
+    var iframe = document.createElement('iframe');
+    iframe.srcdoc = rawResponse;
+    iframe.style.width = '100%';
+    iframe.style.height = '300px';
+    document.body.appendChild(iframe);
+  }
+</script>

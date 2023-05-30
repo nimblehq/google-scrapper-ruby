@@ -1,0 +1,41 @@
+<div id="rawResponseModal" class="modal fade" tabindex="-1" aria-labelledby="rawResponseModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rawResponseModalLabel">Raw Response</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <iframe id="rawResponseIframe" style="width: 100%; height: 500px; border: none;"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openRawResponse(rawResponse) {
+    var modal = document.getElementById('rawResponseModal');
+    var iframe = document.getElementById('rawResponseIframe');
+    iframe.srcdoc = rawResponse;
+    modal.classList.add('show');
+    modal.style.display = 'block';
+    document.body.classList.add('modal-open');
+    var backdrop = document.createElement('div');
+    backdrop.classList.add('modal-backdrop', 'fade', 'show');
+    document.body.appendChild(backdrop);
+
+    var closeButton = modal.querySelector('.btn-close');
+    closeButton.addEventListener('click', closeRawResponse);
+  
+    backdrop.addEventListener('click', closeRawResponse);
+  }
+
+  function closeRawResponse() {
+    var modal = document.getElementById('rawResponseModal');
+    var backdrop = document.querySelector('.modal-backdrop');
+    modal.classList.remove('show');
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+    document.body.removeChild(backdrop);
+  }
+</script>
