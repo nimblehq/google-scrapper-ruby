@@ -10,7 +10,7 @@ describe 'Sign out', type: :system do
   end
 
   it 'redirects to the root page' do
-    login_as
+    login_as_user
     visit root_path
 
     click_link selectors[:sign_out_button]
