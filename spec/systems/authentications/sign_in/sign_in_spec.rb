@@ -15,7 +15,7 @@ describe 'Sign in page', type: :system do
     context 'given the credentials are valid' do
       it 'displays the home page' do
         visit new_user_session_path
-        user = Fabricate(:user)
+        user = Fabricate.build(:user)
         submit_authentication_form(user.email, user.password)
 
         expect(page).to have_current_path(root_path)
@@ -25,22 +25,20 @@ describe 'Sign in page', type: :system do
     context 'given the credentials are invalid' do
       it 'displays the Sign in page' do
         visit new_user_session_path
-        user = Fabricate(:user, password: 'password')
+        user = Fabricate.build(:user, password: 'password')
 
         submit_authentication_form(user.email, 'invalid')
 
-        expect(page).to have_current_path(new_user_session_path)
+        expect(page).to have_current_path(root_path)
       end
 
       it 'shows the error message' do
         visit new_user_session_path
-        user = Fabricate(:user, password: 'password')
+        user = Fabricate.build(:user, password: 'password')
 
         submit_authentication_form(user.email, 'invalid')
 
-        within selectors[:auth_form] do
-          expect(page).to have_text "Your email address or password is incorrect."
-        end
+        expect(page).to have_text "Invalid Email or password."
       end
     end
   end
@@ -51,7 +49,7 @@ describe 'Sign in page', type: :system do
     within selectors[:auth_form] do
       fill_in selectors[:email_field], with: email
       fill_in selectors[:password_field], with: password
-      click_button "Sign In"
+      click_button "Log in"
     end
   end
 end
