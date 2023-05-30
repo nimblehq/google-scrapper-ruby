@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 2023_05_23_085326) do
   enable_extension "plpgsql"
 
   create_table "search_stats", force: :cascade do |t|
-    t.string "keyword"
-    t.integer "ad_count"
-    t.integer "link_count"
-    t.bigint "total_result_count"
+    t.string "keyword", null: false
+    t.integer "ad_count", default: 0, null: false
+    t.integer "link_count", default: 0, null: false
+    t.bigint "total_result_count", default: 0, null: false
     t.text "raw_response"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,4 +39,5 @@ ActiveRecord::Schema.define(version: 2023_05_23_085326) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "search_stats", "users"
 end
