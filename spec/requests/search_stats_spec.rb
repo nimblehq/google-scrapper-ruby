@@ -11,7 +11,7 @@ RSpec.describe 'Search Stats', type: :request do
 
         params = { csv_file: fixture_file_upload('keywords.csv', 'text/csv') }
 
-        post :create, params: params
+        post search_stats_path, params: params
 
         expect(SearchStat.count).to eq(3)
 
@@ -26,7 +26,7 @@ RSpec.describe 'Search Stats', type: :request do
 
         params = { csv_file: fixture_file_upload('invalid_data.csv', 'text/csv') }
 
-        post :create, params: params
+        post search_stats_path, params: params
 
         expect(SearchStat.count).to eq(0)
 
@@ -41,7 +41,7 @@ RSpec.describe 'Search Stats', type: :request do
 
         params = { csv_file: fixture_file_upload('invalid_type.txt', 'text/plain') }
 
-        post :create, params: params
+        post search_stats_path, params: params
 
         expect(SearchStat.count).to eq(0)
 
@@ -56,7 +56,7 @@ RSpec.describe 'Search Stats', type: :request do
 
         params = { csv_file: fixture_file_upload('too_many_keywords.csv', 'text/plain') }
 
-        post :create, params: params
+        post search_stats_path, params: params
 
         expect(SearchStat.count).to eq(0)
 
