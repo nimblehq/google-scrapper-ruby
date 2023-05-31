@@ -5,6 +5,7 @@ require 'csv'
 class SearchStatsController < ApplicationController
   ALLOWED_MIME_TYPE = 'text/csv'
   MAXIMUM_FILE_SIZE_BYTES = 1000000
+  MAXIMUM_KEYWORDS = 1000
 
   def new
     search_stat = SearchStat.new
@@ -22,6 +23,7 @@ class SearchStatsController < ApplicationController
     keywords = CSV.parse(csv_file_content).flatten
 
     raise 'Invalid file data' unless keywords.any?
+    raise 'Too many keywords' unless keywords.count <= MAXIMUM_KEYWORDS
 
     keywords.map do |keyword|
       SearchStat.create({ keyword: keyword })
