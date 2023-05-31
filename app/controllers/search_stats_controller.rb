@@ -3,6 +3,9 @@
 require 'csv'
 
 class SearchStatsController < ApplicationController
+  ALLOWED_MIME_TYPE = 'text/csv'
+  MAXIMUM_FILE_SIZE_BYTES = 1000000
+
   def new
     search_stat = SearchStat.new
 
@@ -10,18 +13,20 @@ class SearchStatsController < ApplicationController
   end
 
   def create
-    csv_file_content = params[:csv_file].read
+    csv_file = params[:csv_file]
 
+    raise 'Invalid file type' unless csv_file.content_type == ALLOWED_MIME_TYPE
+    raise 'File is too large' unless csv_file.size <= MAXIMUM_FILE_SIZE_BYTES
+
+    csv_file_content = params[:csv_file].read
     keywords = CSV.parse(csv_file_content).flatten
 
-    if keywords.any?
-      keywords.map do |keyword|
-        SearchStat.insert({ keyword: keyword })
-      end
-  
-      redirect_to search_stats_path
-    else
-      flash[:alert] = "You have selected file with invalid data"
+    raise 'Invalid file data' unless keywords.any?
+
+    keywords.map do |keyword|
+      SearchStat.create({ keyword: keyword })
     end
+
+    redirect_to root_path
   end
 end
