@@ -14,8 +14,14 @@ class SearchStatsController < ApplicationController
 
     keywords = CSV.parse(csv_file_content).flatten
 
-    keywords.map do |keyword|
-      SearchStat.insert({ keyword: keyword })
+    if keywords.any?
+      keywords.map do |keyword|
+        SearchStat.insert({ keyword: keyword })
+      end
+  
+      redirect_to search_stats_path
+    else
+      flash[:alert] = "You have selected file with invalid data"
     end
   end
 end
