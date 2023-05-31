@@ -1,22 +1,28 @@
 <div class="container mt-4">
   <h4><%= I18n.t('search_stat.title') %></h4>
 
-  <div id="search_stats" class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col"><%= I18n.t('search_stat.keyword') %></th>
-          <th scope="col"><%= I18n.t('search_stat.ad_count') %></th>
-          <th scope="col"><%= I18n.t('search_stat.link_count') %></th>
-          <th scope="col"><%= I18n.t('search_stat.total_result_count') %></th>
-          <th scope="col"><%= I18n.t('search_stat.action') %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @search_stats %>
-      </tbody>
-    </table>
-  </div>
+  <% if @search_stats.any? %>
+    <div id="search_stats" class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col"><%= I18n.t('search_stat.keyword') %></th>
+            <th scope="col"><%= I18n.t('search_stat.ad_count') %></th>
+            <th scope="col"><%= I18n.t('search_stat.link_count') %></th>
+            <th scope="col"><%= I18n.t('search_stat.total_result_count') %></th>
+            <th scope="col"><%= I18n.t('search_stat.action') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @search_stats %>
+        </tbody>
+      </table>
+    </div>
 
-  <%==  pagy_bootstrap_nav(@pagy) %>
+    <%== pagy_bootstrap_nav(@pagy) %>
+  <% else %>
+    <div class="alert alert-info mt-3">
+      <p class="mb-0">No search stats found.</p>
+    </div>
+  <% end %>
 </div>
