@@ -3,7 +3,9 @@
 class SearchStatsController < ApplicationController
   # GET /search_stats
   def index
-    @pagy, @search_stats = pagy(SearchStat.all)
+    @search_query = params[:search_keyword]
+    @search_stats = @search_query.present? ? perform_search(@search_query) : SearchStat.all
+    @pagy, @search_stats = pagy(@search_stats)
   end
 
   def show
@@ -13,6 +15,10 @@ class SearchStatsController < ApplicationController
   end
 
   private
+
+  def perform_search(query)
+    SearchStat.where('keyword ILIKE ?', "%#{query}%")
+  end
 
   def retrieve_adwords_urls(_search_stat)
     # Dummy array of Non AdWords URLs
