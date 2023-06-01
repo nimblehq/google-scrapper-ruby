@@ -6,5 +6,9 @@ Fabricator(:search_stat) do
   link_count { rand(1..10) }
   total_result_count { rand(1..100) }
   raw_response { FFaker::HTMLIpsum.body }
-  user_id { Fabricate(:user).id }
+  user { Fabricate(:user) }
+end
+
+Fabricator(:search_stat_parsed_with_links, from: :search_stat) do
+  result_links(count: FFaker.rand(10) + 1)
 end
