@@ -23,7 +23,7 @@ class SearchStatsController < ApplicationController
     raise 'Invalid file type' unless csv_file.content_type == ALLOWED_MIME_TYPE
 
     csv_file_content = params[:csv_file].read
-    keywords = CSV.parse(csv_file_content).flatten
+    keywords = CSV.parse(csv_file_content).flatten.compact_blank
 
     raise 'Invalid file data' unless keywords.any?
     raise 'Too many keywords' unless keywords.count <= MAXIMUM_KEYWORDS
