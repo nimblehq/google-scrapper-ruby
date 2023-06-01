@@ -29,7 +29,8 @@ class SearchStatsController < ApplicationController
     raise 'Too many keywords' unless keywords.count <= MAXIMUM_KEYWORDS
 
     keywords.map do |keyword|
-      SearchStat.create({ keyword: keyword })
+      search_stat = SearchStat.new({ keyword: keyword })
+      search_stat.save
     end
 
     redirect_to search_stats_path
