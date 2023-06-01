@@ -54,7 +54,7 @@ RSpec.describe 'Search Stats', type: :request do
         user = Fabricate(:user)
         login_as_user user
 
-        params = { csv_file: fixture_file_upload('too_many_keywords.csv', 'text/plain') }
+        params = { csv_file: fixture_file_upload('too_many_keywords.csv', 'text/csv') }
 
         post search_stats_path, params: params
 
