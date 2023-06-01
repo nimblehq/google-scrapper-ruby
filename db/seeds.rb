@@ -8,6 +8,8 @@
 
 require 'fabrication'
 
+Fabricate(:user, email: 'demo@example.com', password: 'nimbleHq1234')
+
 # Generate dummy data for SearchStat
 10.times do
   Fabricate(:search_stat)
