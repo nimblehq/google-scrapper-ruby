@@ -6,6 +6,11 @@ class SearchStatsController < ApplicationController
   ALLOWED_MIME_TYPE = 'text/csv'
   MAXIMUM_KEYWORDS = 1000
 
+  # GET /search_stats
+  def index
+    @pagy, @search_stats = pagy(SearchStat.all)
+  end
+
   def new
     search_stat = SearchStat.new
 
