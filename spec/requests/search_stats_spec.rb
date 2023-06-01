@@ -13,9 +13,9 @@ RSpec.describe 'Search Stats', type: :request do
 
         post search_stats_path, params: params
 
-        expect(SearchStat.count).to eq(3)
+        expect(response).to redirect_to search_stats_path
 
-        expect(page).to redirect_to search_stats_path
+        expect(SearchStat.all.count).to eq(3)
       end
     end
 
