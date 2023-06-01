@@ -26,11 +26,9 @@ RSpec.describe 'Search Stats', type: :request do
 
         params = { csv_file: fixture_file_upload('invalid_data.csv', 'text/csv') }
 
-        post search_stats_path, params: params
+        expect { post search_stats_path, params: params }.to raise_error(RuntimeError, 'Invalid file data')
 
-        expect(SearchStat.count).to eq(0)
-
-        expect(page).to raise_error(RuntimeError, 'Invalid file data')
+        expect(SearchStat.all.count).to eq(0)
       end
     end
 
@@ -41,11 +39,9 @@ RSpec.describe 'Search Stats', type: :request do
 
         params = { csv_file: fixture_file_upload('invalid_type.txt', 'text/plain') }
 
-        post search_stats_path, params: params
+        expect { post search_stats_path, params: params }.to raise_error(RuntimeError, 'Invalid file type')
 
-        expect(SearchStat.count).to eq(0)
-
-        expect(page).to raise_error(RuntimeError, 'Invalid file type')
+        expect(SearchStat.all.count).to eq(0)
       end
     end
 
@@ -56,11 +52,9 @@ RSpec.describe 'Search Stats', type: :request do
 
         params = { csv_file: fixture_file_upload('too_many_keywords.csv', 'text/csv') }
 
-        post search_stats_path, params: params
+        expect { post search_stats_path, params: params }.to raise_error(RuntimeError, 'Too many keywords')
 
-        expect(SearchStat.count).to eq(0)
-
-        expect(page).to raise_error(RuntimeError, 'Too many keywords')
+        expect(SearchStat.all.count).to eq(0)
       end
     end
   end
