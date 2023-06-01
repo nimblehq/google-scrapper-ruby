@@ -27,6 +27,6 @@ class SearchStatsController < ApplicationController
       SearchStat.create({ keyword: keyword })
     end
 
-    redirect_to root_path
+    redirect_to search_stats_path
   end
 end
