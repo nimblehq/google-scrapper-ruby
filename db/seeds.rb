@@ -9,6 +9,6 @@
 require 'fabrication'
 
 # Generate dummy data for SearchStat
-10.times do
+100.times do
   Fabricate(:search_stat)
 end
