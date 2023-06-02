@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_23_085326) do
+ActiveRecord::Schema.define(version: 2023_06_02_033657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 2023_05_23_085326) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "non_ad_count", default: 0, null: false
+    t.integer "top_ad_count", default: 0, null: false
+    t.integer "status", default: 0, null: false
+    t.index ["status"], name: "index_search_stats_on_status"
   end
 
   create_table "users", force: :cascade do |t|
