@@ -1,0 +1,7 @@
+<h1><%= SearchStat.model_name.human %></h1>
+
+<div id="search_stats">
+  <%= render @search_stats %>
+</div>
+
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
