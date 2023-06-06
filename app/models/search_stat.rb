@@ -6,4 +6,6 @@ class SearchStat < ApplicationRecord
 
   validates :keyword, presence: true, length: { maximum: 255 }
   validates :raw_response, presence: true
+
+  enum status: { initialized: 0, running: 1, completed: 2, failed: 3 }
 end
