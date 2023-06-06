@@ -7,7 +7,7 @@ class CreateResultLinks < ActiveRecord::Migration[7.0]
       t.integer :link_type, null: false
       t.citext :url, null: false
 
-      t.timestamps default: -> { 'CURRENT_TIMESTAMP' }
+      t.timestamps
     end
 
     add_index :result_links, :link_type
