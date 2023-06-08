@@ -5,7 +5,7 @@
         Back
       <% end %>
     </div>
-    <h4 class="mb-2"><%= I18n.t('search_stat.title') %></h4>
+    <h4 class="mb-2"><%= SearchStat.model_name.human %></h4>
   </div>
 
   <div class="card mt-4">
@@ -14,33 +14,33 @@
       <div class="row">
         <div class="col-md-4">
           <p class="card-text small">
-            <strong><%= I18n.t('search_stat.keyword') %>:</strong>
+            <strong><%= SearchStat.human_attribute_name(:keyword) %>:</strong>
             <%= @search_stat.keyword %>
           </p>
 
           <p class="card-text small">
-            <strong><%= I18n.t('search_stat.ad_count_top') %>:</strong>
+            <strong><%= SearchStat.human_attribute_name(:ad_count_top) %>:</strong>
             <%= 1 %>
           </p>
 
           <p class="card-text small">
-            <strong><%= I18n.t('search_stat.ad_count') %>:</strong>
+            <strong><%= SearchStat.human_attribute_name(:ad_count) %>:</strong>
             <%= @search_stat.ad_count %>
           </p>
         </div>
         <div class="col-md-4">
           <p class="card-text small">
-            <strong><%= I18n.t('search_stat.non_ad_count') %>:</strong>
+            <strong><%= SearchStat.human_attribute_name(:non_ad_count) %>:</strong>
             <%= @search_stat.ad_count %>
           </p>
 
           <p class="card-text small">
-            <strong><%= I18n.t('search_stat.link_count') %>:</strong>
+            <strong><%= SearchStat.human_attribute_name(:link_count) %>:</strong>
             <%= @search_stat.link_count %>
           </p>
 
           <p class="card-text small">
-            <strong><%= I18n.t('search_stat.total_result_count') %>:</strong>
+            <strong><%= SearchStat.human_attribute_name(:total_result_count) %>:</strong>
             <%= @search_stat.total_result_count %>
           </p>
         </div>
@@ -51,7 +51,7 @@
           </p>
 
           <p class="card-text small">
-            <strong><%= I18n.t('search_stat.user') %>:</strong>
+            <strong><%=  SearchStat.human_attribute_name(:total_result_count) %>:</strong>
             <%= @search_stat.user_id %>
           </p>
         </div>
@@ -63,7 +63,7 @@
     <div class="card-body">
       <h5 class="card-title">List of URLs of AdWords Advertisers in Top Position</h5>
       <ul class="list-group">
-        <% @search_stat.result_links.ads_top.or(@search_stat.result_links.ads_page).each do |result_link| %>
+        <% @search_stat.result_links.ads_top.or(@search_stat.result_links.non_ads).each do |result_link| %>
           <li class="list-group-item">
             <%= link_to result_link.url, result_link.url %>
           </li>
