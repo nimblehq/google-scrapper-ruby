@@ -1,15 +1,16 @@
-<h1><%= SearchStat.model_name.human %></h1>
+<div class="container mt-4">
+  <h4><%= SearchStat.model_name.human  %></h4>
 
   <% if @search_stats.any? %>
     <div id="search_stats" class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead class="thead-light">
           <tr>
-            <th scope="col"><%= I18n.t('search_stat.keyword') %></th>
-            <th scope="col"><%= I18n.t('search_stat.ad_count') %></th>
-            <th scope="col"><%= I18n.t('search_stat.link_count') %></th>
-            <th scope="col"><%= I18n.t('search_stat.total_result_count') %></th>
-            <th scope="col"><%= I18n.t('search_stat.action') %></th>
+            <th><%= SearchStat.human_attribute_name(:keyword) %></th>
+            <th><%= SearchStat.human_attribute_name(:ad_count) %></th>
+            <th><%= SearchStat.human_attribute_name(:link_count) %></th>
+            <th><%= SearchStat.human_attribute_name(:total_result_count) %></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
