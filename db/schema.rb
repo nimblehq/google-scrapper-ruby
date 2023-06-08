@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_02_033657) do
+ActiveRecord::Schema.define(version: 2023_06_08_032015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2023_06_02_033657) do
   create_table "result_links", force: :cascade do |t|
     t.bigint "search_stat_id", null: false
     t.integer "link_type", null: false
-    t.citext "url", null: false
+    t.string "url", null: false
     t.datetime "created_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["link_type"], name: "index_result_links_on_link_type"
