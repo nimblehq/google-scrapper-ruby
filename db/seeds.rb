@@ -9,6 +9,8 @@
 require 'fabrication'
 
 # Generate dummy data for SearchStat
-100.times do
-  Fabricate(:search_stat)
+user = User.where(email: 'user@demo.com').first_or_create(Fabricate.attributes_for(:user, email: 'user@demo.com'))
+
+10.times do
+  Fabricate.times(100, :search_stat_parsed_with_links, user: user)
 end

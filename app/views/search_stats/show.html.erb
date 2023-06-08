@@ -63,9 +63,9 @@
     <div class="card-body">
       <h5 class="card-title">List of URLs of AdWords Advertisers in Top Position</h5>
       <ul class="list-group">
-        <% @search_stat.adwords_urls.each do |url| %>
+        <% @search_stat.result_links.ads_top.or(@search_stat.result_links.ads_page).each do |result_link| %>
           <li class="list-group-item">
-            <%= link_to url, url, target: "_blank" %>
+            <%= link_to result_link.url, result_link.url %>
           </li>
         <% end %>
       </ul>
@@ -76,9 +76,9 @@
     <div class="card-body">
       <h5 class="card-title">List of URLs of Non-AdWords Results on the Page</h5>
       <ul class="list-group">
-        <% @search_stat.non_adwords_urls.each do |url| %>
+        <% @search_stat.result_links.non_ads.each do |result_link| %>
           <li class="list-group-item">
-            <%= link_to url, url, target: "_blank" %>
+            <%= link_to result_link.url, result_link.url, target: "_blank" %>
           </li>
         <% end %>
       </ul>
