@@ -9,8 +9,5 @@ class CreateResultLinks < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-
-    add_index :result_links, :link_type
-    add_index :result_links, :url
   end
 end

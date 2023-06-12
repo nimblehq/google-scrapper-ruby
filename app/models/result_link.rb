@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ResultLink < ApplicationRecord
-  enum link_type: { ads_top: 0, non_ads: 2 }
+  enum link_type: { ads_top: 'ads_top', non_ads: 'non_ads' }
 
   belongs_to :search_stat, inverse_of: :result_links
 
