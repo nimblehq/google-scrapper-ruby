@@ -44,3 +44,5 @@ en:
       raw_response: Raw response
       total_result_count: Total result count
       user_id: User
+  buttons:
+    search_stat_details: Show Details
