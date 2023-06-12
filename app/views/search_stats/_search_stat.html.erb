@@ -1,31 +1,9 @@
-<div id="<%= dom_id search_stat %>">
-  <p>
-    <strong><%= SearchStat.human_attribute_name(:keyword) %>:</strong>
-    <%= search_stat.keyword %>
-  </p>
-
-  <p>
-    <strong><%= SearchStat.human_attribute_name(:ad_count) %>:</strong>
-    <%= search_stat.ad_count %>
-  </p>
-
-  <p>
-    <strong><%= SearchStat.human_attribute_name(:link_count) %>:</strong>
-    <%= search_stat.link_count %>
-  </p>
-
-  <p>
-    <strong><%= SearchStat.human_attribute_name(:total_result_count) %>:</strong>
-    <%= search_stat.total_result_count %>
-  </p>
-
-  <p>
-    <strong><%= SearchStat.human_attribute_name(:raw_response) %>:</strong>
-    <%= search_stat.raw_response %>
-  </p>
-
-  <p>
-    <strong><%= SearchStat.human_attribute_name(:user_id) %>:</strong>
-    <%= search_stat.user_id %>
-  </p>
-</div>
+<tr id="<%= dom_id search_stat %>">
+  <td><%= search_stat.keyword %></td>
+  <td><%= search_stat.ad_count %></td>
+  <td><%= search_stat.link_count %></td>
+  <td><%= search_stat.total_result_count %></td>
+  <td>
+    <%= button_to 'Show Details', search_stat_path(search_stat), method: :get, class: 'btn btn-primary' %>
+  </td>
+</tr>

@@ -1,7 +1,28 @@
-<h1><%= SearchStat.model_name.human %></h1>
+<div class="container mt-4">
+  <h4><%= SearchStat.model_name.human  %></h4>
 
-<div id="search_stats">
-  <%= render @search_stats %>
+  <% if @search_stats.any? %>
+    <div id="search_stats" class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-light">
+          <tr>
+            <th><%= SearchStat.human_attribute_name(:keyword) %></th>
+            <th><%= SearchStat.human_attribute_name(:ad_count) %></th>
+            <th><%= SearchStat.human_attribute_name(:link_count) %></th>
+            <th><%= SearchStat.human_attribute_name(:total_result_count) %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @search_stats %>
+        </tbody>
+      </table>
+    </div>
+
+    <%== pagy_bootstrap_nav(@pagy) %>
+  <% else %>
+    <div class="alert alert-info mt-3">
+      <p class="mb-0">No search stats found.</p>
+    </div>
+  <% end %>
 </div>
-
-<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
