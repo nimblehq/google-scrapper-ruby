@@ -19,4 +19,4 @@ function closeRawResponse() {
 var closeButton = document.querySelector('#rawResponseModal .btn-close');
 closeButton.addEventListener('click', closeRawResponse);
 
-window.openRawResponse = openRawResponse
+window.openRawResponse = openRawResponse;

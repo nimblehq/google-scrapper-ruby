@@ -46,3 +46,4 @@ en:
       user_id: User
   buttons:
     search_stat_details: Show Details
+    raw_response: View Raw Response

@@ -19,7 +19,7 @@
 
           <p class="card-text small">
             <strong><%= SearchStat.human_attribute_name(:ad_count_top) %>:</strong>
-            <%= 1 %>
+            <%= @search_stat.top_ad_count %>
           </p>
 
           <p class="card-text small">
@@ -30,7 +30,7 @@
         <div class="col-md-4">
           <p class="card-text small">
             <strong><%= SearchStat.human_attribute_name(:non_ad_count) %>:</strong>
-            <%= @search_stat.ad_count %>
+            <%= @search_stat.non_ad_count %>
           </p>
 
           <p class="card-text small">
@@ -45,10 +45,10 @@
         </div>
         <div class="col-md-4">
           <p class="card-text small">
-            <%= button_tag 'View Raw Response', class: 'btn btn-primary',
+            <%= button_tag t('buttons.raw_response'), class: 'btn btn-primary',
               onclick: "openRawResponse('#{j @search_stat.raw_response}')"%>
           </p>
-
+  
           <p class="card-text small">
             <strong><%=  SearchStat.human_attribute_name(:total_result_count) %>:</strong>
             <%= @search_stat.user_id %>
