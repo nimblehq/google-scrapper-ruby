@@ -16,7 +16,7 @@ RSpec.describe Google::SearchKeywordJob, type: :job do
       it 'saves all result_links in the DataBase', vcr: 'google_search/top_ads_1' do
         search_stat = Fabricate(:search_stat)
 
-        described_class.perform_now search_stat.id
+        described_class.perform_now search_stat_id: search_stat.id
 
         expect(search_stat.result_links.count).to eq(45)
       end
@@ -24,7 +24,7 @@ RSpec.describe Google::SearchKeywordJob, type: :job do
       it 'sets the search stat status as completed', vcr: 'google_search/top_ads_1' do
         search_stat = Fabricate(:search_stat)
 
-        described_class.perform_now search_stat.id
+        described_class.perform_now search_stat_id: search_stat.id
 
         expect(search_stat.reload.status).to eq('completed')
       end
@@ -32,7 +32,7 @@ RSpec.describe Google::SearchKeywordJob, type: :job do
       it 'sets the links counts with the right values', vcr: 'google_search/top_ads_1' do
         search_stat = Fabricate(:search_stat)
 
-        described_class.perform_now search_stat.id
+        described_class.perform_now search_stat_id: search_stat.id
 
         search_stat.reload
 
