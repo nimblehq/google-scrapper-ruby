@@ -27,11 +27,8 @@ module Google
         ad_count: ads_page_count,
         non_ad_count: non_ads_result_count,
         total_result_count: total_link_count,
-
         raw_response: html,
-
         result_links: result_links,
-
         status: :completed
       }
     end
