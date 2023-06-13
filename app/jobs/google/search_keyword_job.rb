@@ -4,7 +4,7 @@ module Google
   class SearchKeywordJob < ApplicationJob
     queue_as :default
 
-    def perform(search_stat_id)
+    def perform(search_stat_id:)
       search_stat = SearchStat.find search_stat_id
 
       html_result = Google::ClientService.new(keyword: search_stat.keyword).call
