@@ -66,8 +66,8 @@ module Google
     end
 
     def result_links
-      results = result_link_map(ads_top_urls, 0)
-      results += result_link_map(non_ads_urls, 1)
+      results = result_link_map(ads_top_urls, :ads_top)
+      results += result_link_map(non_ads_urls, :non_ads)
 
       results
     end
