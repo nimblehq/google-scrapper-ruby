@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Fabricator(:result_link) do
-  link_type { FFaker.rand 3 }
+  link_type { ResultLink.link_types.keys.sample }
   url { FFaker::Internet.http_url }
 end
 

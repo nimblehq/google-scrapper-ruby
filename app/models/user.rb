@@ -4,7 +4,7 @@ class User < ApplicationRecord
   include Authenticable
   PASSWORD_PATTERN = /(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}/
 
-  has_many :search_stats, dependent: :destroy
+  has_many :search_stats, inverse_of: :user, dependent: :destroy
 
   before_validation :password_complexity, on: :create
 
