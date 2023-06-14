@@ -30,16 +30,23 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  search_stat:
-    ad_count: 'Ad count'
-    ad_count_top: 'Ad count top'
-    details_title: 'Search stat details'
-    keyword: 'Keyword'
-    link_count: 'Link count'
-    non_ad_count: 'Non ad count'
-    raw_response: 'Raw response'
-    search_button_text: 'Search'
-    search_placeholder: 'Enter keyword'
-    title: 'Search stats'
-    total_result_count: 'Total result count'
-    user: 'User'
+  activerecord:
+    models:
+      search_stat: Search statistics
+
+  attributes:
+    search_stat:
+      ad_count: Ad count
+      ad_count_top: Ad count top
+      keyword: Keyword
+      link_count: Link count
+      non_ad_count: Non ad count
+      raw_response: Raw response
+      total_result_count: Total result count
+      user_id: User
+  buttons:
+    search_stat_details: Show Details
+    raw_response: View Raw Response
+    search: Search
+  instructions:
+    search_query: Type your keyword

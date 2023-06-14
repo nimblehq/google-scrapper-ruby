@@ -10,21 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_23_085326) do
+ActiveRecord::Schema.define(version: 2023_06_12_121926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
 
+  create_table "result_links", force: :cascade do |t|
+    t.bigint "search_stat_id", null: false
+    t.string "link_type", null: false
+    t.string "url", null: false
+    t.datetime "created_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["link_type"], name: "index_result_links_on_link_type"
+    t.index ["search_stat_id"], name: "index_result_links_on_search_stat_id"
+    t.index ["url"], name: "index_result_links_on_url"
+  end
+
   create_table "search_stats", force: :cascade do |t|
-    t.string "keyword"
-    t.integer "ad_count"
-    t.integer "link_count"
-    t.bigint "total_result_count"
+    t.string "keyword", null: false
+    t.integer "ad_count", default: 0, null: false
+    t.integer "link_count", default: 0, null: false
+    t.bigint "total_result_count", default: 0, null: false
     t.text "raw_response"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "non_ad_count", default: 0, null: false
+    t.integer "top_ad_count", default: 0, null: false
+    t.integer "status", default: 0, null: false
+    t.index ["status"], name: "index_search_stats_on_status"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,4 +54,6 @@ ActiveRecord::Schema.define(version: 2023_05_23_085326) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "result_links", "search_stats"
+  add_foreign_key "search_stats", "users"
 end
