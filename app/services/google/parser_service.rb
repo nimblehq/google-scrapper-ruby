@@ -73,9 +73,7 @@ module Google
     end
 
     def result_link_map(urls, type)
-      urls.map do |url|
-        { url: url, link_type: type }
-      end
+      urls.map { |url| { url: url, link_type: type } }
     end
   end
 end
