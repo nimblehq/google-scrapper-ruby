@@ -6,12 +6,15 @@ module Google
 
     def perform(search_stat_id:)
       search_stat = SearchStat.find search_stat_id
-
-      html_result = Google::ClientService.new(keyword: search_stat.keyword).call
-
-      raise ClientServiceError unless html_result
-
+      html_result = fetch_html_result(search_stat.keyword)
       update_search_stat search_stat, ParserService.new(html_response: html_result).call
+    end
+
+    def fetch_html_result(keyword)
+      Google::ClientService.new(keyword: keyword).call
+    rescue StandardError => e
+      Rails.logger.error("Error while fetching HTML result: #{e.message}")
+      raise ClientServiceError, 'Error fetching HTML result'
     end
 
     def update_search_stat(search_stat, attributes)
