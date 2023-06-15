@@ -8,6 +8,12 @@
 
 require 'fabrication'
 
+# if there is no OAuth application created, create them
+if Doorkeeper::Application.count.zero?
+  Doorkeeper::Application.create(name: "iOS client", redirect_uri: "", scopes: "")
+  Doorkeeper::Application.create(name: "Android client", redirect_uri: "", scopes: "")
+end
+
 # Generate dummy data for SearchStat
 user = User.where(email: 'user@demo.com').first_or_create(Fabricate.attributes_for(:user, email: 'user@demo.com'))
 

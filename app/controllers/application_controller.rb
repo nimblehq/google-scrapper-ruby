@@ -4,5 +4,5 @@ class ApplicationController < ActionController::Base
   include Localization
   include Pagy::Backend
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, unless: -> { is_a?(HealthCheckController) }
 end

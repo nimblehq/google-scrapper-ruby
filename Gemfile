@@ -19,6 +19,7 @@ gem 'devise' # Flexible authentication solution for Rails with Warden
 
 # Authentications & Authorizations
 gem 'pundit' # Minimal authorization through OO design and pure Ruby classes
+gem 'doorkeeper' # Awesome OAuth 2 provider for your Rails / Grape app
 
 # Assets
 gem 'sassc'
