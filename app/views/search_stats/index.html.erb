@@ -1,6 +1,13 @@
 <div class="container mt-4">
   <h4><%= SearchStat.model_name.human  %></h4>
-
+  <%= form_tag(search_stats_path, method: :get, class: "mt-3 mb-3") do %>
+    <div class="input-group">
+      <%= text_field_tag(:search_keyword, params[:search_keyword], class: "form-control rounded me-3", placeholder: t('instructions.search_query')) %>
+      <div class="input-group-append">
+        <%= submit_tag(t('buttons.search'), class: "btn btn-primary") %>
+      </div>
+    </div>
+  <% end %>
   <% if @search_stats.any? %>
     <div id="search_stats" class="table-responsive">
       <table class="table table-bordered table-striped">
