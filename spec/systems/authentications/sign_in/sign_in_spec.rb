@@ -38,7 +38,7 @@ describe 'Sign in page', type: :system do
 
         submit_authentication_form(user.email, 'invalid')
 
-        expect(page).to have_text "Invalid Email or password."
+        expect(page).to have_text 'Invalid Email or password.'
       end
     end
   end
@@ -49,7 +49,7 @@ describe 'Sign in page', type: :system do
     within selectors[:auth_form] do
       fill_in selectors[:email_field], with: email
       fill_in selectors[:password_field], with: password
-      click_button "Log in"
+      click_button 'Log in'
     end
   end
 end
