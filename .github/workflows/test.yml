@@ -48,6 +48,13 @@ jobs:
         if: ${{ env.BRANCH_TAG != 'latest' && env.BRANCH_TAG != 'development' }}
         run: docker-compose pull test || true
 
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0.1'
+
+      - name: install gems
+        run: bundle install
+        
       - name: Build Docker image
         run: bin/docker-prepare && docker-compose build && bin/docker-assets-precompile
 
