@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for google-scrapper-ruby on 2023-05-18T11:25:54+07:00
+# fly.toml app configuration file generated for google-scrapper-ruby on 2023-06-16T15:15:31+07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -24,11 +24,3 @@ console_command = "/rails/bin/rails console"
     method = "GET"
     path = "/health_check"
     protocol = "http"
-
-[env]
-  DEPLOYED_HOST = "google-scrapper-ruby.fly.dev"
-  PORT = 3000
-  ASSET_HOST = ""
-  BUILD_ENV = "production"
-  NODE_ENV = "production"
-  RUBY_ENV = "production"
