@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for google-scrapper-ruby on 2023-06-16T15:32:13+07:00
+# fly.toml app configuration file generated for google-scrapper-ruby-prod on 2023-06-16T16:27:15+07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "google-scrapper-ruby"
+app = "google-scrapper-ruby-prod"
 primary_region = "sin"
 console_command = "/rails/bin/rails console"
 

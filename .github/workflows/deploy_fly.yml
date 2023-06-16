@@ -25,3 +25,6 @@ jobs:
         DOCKER_IMAGE: ${{ vars.DOCKER_IMAGE }}
         BRANCH_TAG: ${{ vars.BRANCH_TAG }}
         PORT: ${{ vars.PORT }}
+        BUILD_ENV: 'production'
+        NODE_ENV: 'production'
+        RUBY_ENV: 'production'
