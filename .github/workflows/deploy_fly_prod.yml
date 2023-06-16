@@ -1,0 +1,30 @@
+name: Fly Deploy
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - chore/30-setup-cicd
+jobs:
+  deploy:
+    name: Deploy app
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build Docker image
+      run: bin/docker-prepare && docker compose build
+   
+    - uses: superfly/flyctl-actions/setup-flyctl@master
+    - run: flyctl deploy
+    env:
+        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        DOCKER_REGISTRY_HOST: ${{ vars.DOCKER_REGISTRY_HOST }}
+        DOCKER_REGISTRY_USERNAME: ${{ github.repository_owner }}
+        DOCKER_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DOCKER_IMAGE: ${{ vars.DOCKER_IMAGE }}
+        BRANCH_TAG: ${{ vars.BRANCH_TAG }}
+        PORT: ${{ vars.PORT }}
+        BUILD_ENV: 'production'
+        NODE_ENV: 'production'
+        RUBY_ENV: 'production'
