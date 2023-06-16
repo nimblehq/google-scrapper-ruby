@@ -28,4 +28,4 @@ jobs:
         BUILD_ENV: 'production'
         NODE_ENV: 'production'
         RUBY_ENV: 'production'
-        DEPLOYED_HOST: 'https://google-scrapper-ruby-prod.fly.dev'
+        DEPLOYED_HOST: 'https://google-scrapper-ruby.fly.dev'
