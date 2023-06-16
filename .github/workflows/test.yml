@@ -14,6 +14,7 @@ env:
   DOCKER_REGISTRY_TOKEN: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
   DOCKER_IMAGE: ${{ github.repository }}
   NODE_VERSION: 16
+  PORT: 80
 
   # Set the default docker-compose file
   COMPOSE_FILE: docker-compose.test.yml

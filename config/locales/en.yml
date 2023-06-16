@@ -30,4 +30,15 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      search_stat: Search statistics
+
+  attributes:
+    search_stat:
+      ad_count: Ad count
+      keyword: Keyword
+      link_count: Link count
+      raw_response: Raw response
+      total_result_count: Total result count
+      user_id: User

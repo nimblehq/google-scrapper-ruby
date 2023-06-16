@@ -10,7 +10,7 @@ on:
 env:
   DOCKER_REGISTRY_HOST: ${{ secrets.DOCKER_REGISTRY_HOST }}
   DOCKER_IMAGE: ${{ github.repository }}
-  PORT: 80
+  PORT: ${{secrets.PORT}}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
