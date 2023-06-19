@@ -9,7 +9,10 @@
 require 'fabrication'
 
 # Generate dummy data for SearchStat
-user = User.where(email: 'user@demo.com').first_or_create(Fabricate.attributes_for(:user, email: 'user@demo.com'))
+
+user = User.find_or_initialize_by(email: 'user@demo.com') do |user|
+  user.password = 'aaaaaaA1'
+end
 
 10.times do
   Fabricate.times(100, :search_stat, user: user)
