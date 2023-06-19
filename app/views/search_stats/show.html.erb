@@ -58,7 +58,7 @@
 
   <div class="card mt-4">
     <div class="card-body">
-      <h5 class="card-title">List of URLs of AdWords Advertisers in Top Position</h5>
+      <h5 class="card-title"><%=t('titles.top_ads')%></h5>
       <ul class="list-group">
         <% @search_stat.result_links.ads_top.or(@search_stat.result_links.non_ads).each do |result_link| %>
           <li class="list-group-item">
@@ -71,7 +71,7 @@
 
   <div class="card mt-4">
     <div class="card-body">
-      <h5 class="card-title">List of URLs of Non-AdWords Results on the Page</h5>
+      <h5 class="card-title"><%=t('titles.non_ads')%></h5>
       <ul class="list-group">
         <% @search_stat.result_links.non_ads.each do |result_link| %>
           <li class="list-group-item">
