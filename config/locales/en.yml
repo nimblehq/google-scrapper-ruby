@@ -45,11 +45,11 @@ en:
       total_result_count: Total result count
       user_id: User
   buttons:
-    raw_response: View Raw Response
     back: Back
+    raw_response: View Raw Response
   links: 
     search_stat_details: Show Details
   titles:
-    top_ads: List of URLs of AdWords Advertisers in Top Position
-    non_ads: List of URLs of Non-AdWords Results on the Page
     no_stats: No search stats found
+    non_ads: List of URLs of Non-AdWords Results on the Page
+    top_ads: List of URLs of AdWords Advertisers in Top Position
