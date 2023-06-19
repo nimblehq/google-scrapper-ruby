@@ -1,3 +1,5 @@
-.title::after {
-  content: ':';
+.search_stat_detail {
+  &__title:after {
+    content: ':';
+  }
 }
