@@ -52,3 +52,4 @@ en:
   titles:
     top_ads: List of URLs of AdWords Advertisers in Top Position
     non_ads: List of URLs of Non-AdWords Results on the Page
+    no_stats: No search stats found
