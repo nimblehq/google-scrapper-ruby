@@ -46,6 +46,7 @@ en:
       user_id: User
   buttons:
     raw_response: View Raw Response
+    back: Back
   links: 
     search_stat_details: Show Details
   titles:
