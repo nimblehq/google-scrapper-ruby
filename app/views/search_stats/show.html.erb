@@ -44,9 +44,9 @@
           </p>
         </div>
         <div class="col-md-4">
-          <%= button_tag t('buttons.raw_response'), class: 'btn btn-primary',
-            onclick: "openRawResponse('#{j @search_stat.raw_response}')"%>
-          
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#rawResponseModal">
+            <%= t('buttons.raw_response') %>
+          </button>
           <p class="card-text small">
             <strong><%=  SearchStat.human_attribute_name(:total_result_count) %>:</strong>
             <%= @search_stat.user_id %>
