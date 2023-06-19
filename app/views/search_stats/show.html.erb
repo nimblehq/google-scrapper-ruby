@@ -7,39 +7,39 @@
     </div>
   </div>
 
-  <div class="card mt-4 search_stat_detail">
+  <div class="card mt-4 search-stat-detail">
     <div class="card-body">
       <h5 class="card-title border-bottom pb-3 mb-4"><%= SearchStat.model_name.human %></h5>
       <div class="row">
         <div class="col-md-4">
           <p class="card-text small">
-            <strong class="search_stat_detail__title"><%= SearchStat.human_attribute_name(:keyword) %></strong>
+            <strong class="search-stat-detail__title"><%= SearchStat.human_attribute_name(:keyword) %></strong>
             <%= @search_stat.keyword %>
           </p>
 
           <p class="card-text small">
-          <strong class="search_stat_detail__title"><%= SearchStat.human_attribute_name(:ad_count_top) %></strong>
+          <strong class="search-stat-detail__title"><%= SearchStat.human_attribute_name(:ad_count_top) %></strong>
             <%= @search_stat.top_ad_count %>
           </p>
 
           <p class="card-text small">
-            <strong class="search_stat_detail__title"><%= SearchStat.human_attribute_name(:ad_count) %></strong>
+            <strong class="search-stat-detail__title"><%= SearchStat.human_attribute_name(:ad_count) %></strong>
             <%= @search_stat.ad_count %>
           </p>
         </div>
         <div class="col-md-4">
           <p class="card-text small">
-            <strong class="search_stat_detail__title"><%= SearchStat.human_attribute_name(:non_ad_count) %></strong>
+            <strong class="search-stat-detail__title"><%= SearchStat.human_attribute_name(:non_ad_count) %></strong>
             <%= @search_stat.non_ad_count %>
           </p>
 
           <p class="card-text small">
-            <strong class="search_stat_detail__title"><%= SearchStat.human_attribute_name(:link_count) %></strong>
+            <strong class="search-stat-detail__title"><%= SearchStat.human_attribute_name(:link_count) %></strong>
             <%= @search_stat.link_count %>
           </p>
 
           <p class="card-text small">
-            <strong class="search_stat_detail__title"><%= SearchStat.human_attribute_name(:total_result_count) %></strong>
+            <strong class="search-stat-detail__title"><%= SearchStat.human_attribute_name(:total_result_count) %></strong>
             <%= @search_stat.total_result_count %>
           </p>
         </div>

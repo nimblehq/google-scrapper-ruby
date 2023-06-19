@@ -1,5 +1,5 @@
-.search_stat_detail {
-  &__title:after {
+.search-stat-detail {
+  &__title::after {
     content: ':';
   }
 }
