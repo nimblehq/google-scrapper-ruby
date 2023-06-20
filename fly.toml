@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "google-scrapper-ruby-prod"
+app = "google-scrapper-ruby"
 primary_region = "sin"
 console_command = "/rails/bin/rails console"
 
