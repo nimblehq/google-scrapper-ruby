@@ -15,6 +15,7 @@ console_command = "/rails/bin/rails console"
   AVAILABLE_LOCALES = "en"
   DEFAULT_LOCALE = "en"
   FALLBACK_LOCALES = "en"
+  RAILS_LOG_TO_STDOUT = true
 
 [http_service]
   internal_port = 80
