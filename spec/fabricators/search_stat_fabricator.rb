@@ -9,7 +9,7 @@ Fabricator(:search_stat) do
   top_ad_count { rand(1..5) }
   status { rand(1..3) }
   raw_response { FFaker::HTMLIpsum.body }
-  user { User.create(email: 'user@demo.com', password: 'Secret@11') }
+  user { Fabricate(:user) }
 end
 
 Fabricator(:search_stat_parsed_with_links, from: :search_stat) do
