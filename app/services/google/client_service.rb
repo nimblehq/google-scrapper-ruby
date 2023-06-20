@@ -7,6 +7,8 @@ module Google
 
     BASE_SEARCH_URL = 'https://www.google.com/search'
 
+    SUCCESS_STATUS_CODE = 200
+
     def initialize(keyword:, lang: 'en')
       @escaped_keyword = CGI.escape(keyword)
       @uri = URI("#{BASE_SEARCH_URL}?q=#{@escaped_keyword}&hl=#{lang}&gl=#{lang}")
@@ -26,15 +28,9 @@ module Google
 
     private
 
-    # Inspect Http response status code
-    # Any non 200 response code will be logged
     def valid_result?(result)
-      return true if result&.response&.code == '200'
-
-      Rails.logger.warn "Warning: Query Google with '#{@escaped_keyword}' return status code #{result.response.code}"
-        .colorize(:yellow)
-
-      false
+      return false unless result
+      return true if result.response.code == SUCCESS_STATUS_CODE
     end
   end
 end
