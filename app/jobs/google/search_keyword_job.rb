@@ -21,9 +21,7 @@ module Google
 
     def update_search_stat(search_stat, attributes)
       SearchStat.transaction do
-        # rubocop:disable Rails/SkipsModelValidations
-        search_stat.result_links.insert_all attributes[:result_links]
-        # rubocop:enable Rails/SkipsModelValidations
+        search_stat.result_links.create(attributes[:result_links])
 
         search_stat.update! attributes.except(:result_links)
       end
