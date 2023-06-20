@@ -7,6 +7,15 @@ app = "google-scrapper-ruby"
 primary_region = "sin"
 console_command = "/rails/bin/rails console"
 
+[env]
+  RAILS_ENV = "production"
+  MAILER_DEFAULT_HOST = "localhost"
+  MAILER_DEFAULT_PORT = "3000"
+  MAILER_SENDER = "Test <noreply@nimblehq.co>"
+  AVAILABLE_LOCALES = "en"
+  DEFAULT_LOCALE = "en"
+  FALLBACK_LOCALES = "en"
+  
 [http_service]
   internal_port = 80
   force_https = true
