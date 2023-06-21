@@ -6,6 +6,8 @@ module Google
 
     def perform(search_stat_id:)
       search_stat = SearchStat.find search_stat_id
+      return unless search_stat
+
       html_result = fetch_html_result(search_stat.keyword)
       parsed_attributes = ParserService.new(html_response: html_result).call
 
