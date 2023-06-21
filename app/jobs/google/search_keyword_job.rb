@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Google
+  class ClientServiceError < StandardError; end
+
   class SearchKeywordJob < ApplicationJob
     queue_as :default
 
@@ -8,17 +10,15 @@ module Google
       search_stat = SearchStat.find search_stat_id
       return unless search_stat
 
-      html_result = fetch_html_result(search_stat.keyword)
+      html_result = Google::ClientService.new(keyword: search_stat.keyword).call
+
+      raise ClientServiceError unless html_result
+
       parsed_attributes = ParserService.new(html_response: html_result).call
 
       update_search_stat(search_stat, parsed_attributes)
-    end
-
-    def fetch_html_result(keyword)
-      Google::ClientService.new(keyword: keyword).call
-    rescue StandardError => e
-      Rails.logger.error("Error while fetching HTML result: #{e.message}")
-      raise ClientServiceError, 'Error fetching HTML result'
+    rescue ActiveRecord::RecordNotFound, ClientServiceError, ArgumentError
+      update_keyword_status search_stat, :failed
     end
 
     def update_search_stat(search_stat, attributes)
@@ -27,6 +27,10 @@ module Google
 
         search_stat.update! attributes.except(:result_links)
       end
+    end
+
+    def update_search_stat_status(search_stat, status)
+      search_stat.update! status: status
     end
   end
 end
