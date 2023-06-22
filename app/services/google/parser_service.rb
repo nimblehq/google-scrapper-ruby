@@ -46,19 +46,19 @@ module Google
     end
 
     def ads_top_urls
-      document.css("##{AD_CONTAINER_ID} .#{ADWORDS_CLASS}").filter_map { |a_tag| a_tag['href'].present? }
+      document.css("##{AD_CONTAINER_ID} .#{ADWORDS_CLASS}").filter_map { |a_tag| a_tag['href'].presence }
     end
 
     def ads_page_urls
-      document.css(".#{ADWORDS_CLASS}").filter_map { |a_tag| a_tag['href'].present? }
+      document.css(".#{ADWORDS_CLASS}").filter_map { |a_tag| a_tag['href'].presence }
     end
 
     def non_ads_result_count
-      document.css(NON_ADS_RESULT_SELECTOR).count { |a_tag| a_tag['href'].present? }
+      document.css(NON_ADS_RESULT_SELECTOR).count { |a_tag| a_tag['href'].presence }
     end
 
     def non_ads_urls
-      document.css(NON_ADS_RESULT_SELECTOR).filter_map { |a_tag| a_tag['href'].present? }
+      document.css(NON_ADS_RESULT_SELECTOR).filter_map { |a_tag| a_tag['href'].presence }
     end
 
     def total_link_count
