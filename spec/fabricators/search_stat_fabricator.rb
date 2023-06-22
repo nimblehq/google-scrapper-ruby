@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Fabricator(:search_stat) do
+Fabricator(:search_stat, class_name: SearchStat) do
   keyword { FFaker::Lorem.word }
   ad_count { rand(1..10) }
   link_count { rand(1..60) }
