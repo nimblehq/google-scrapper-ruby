@@ -1,4 +1,4 @@
-<div id="rawResponseModal" class="modal fade" tabindex="-1" aria-labelledby="rawResponseModalLabel" aria-hidden="true">
+<div id="rawResponseModal" class="modal fade raw-response-modal" tabindex="-1" aria-labelledby="rawResponseModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,7 +6,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <iframe style="width: 100%; height: 80vh; border: none;" srcdoc="<%= sanitize(@search_stat.raw_response) %>" >
+        <iframe srcdoc="<%= sanitize(@search_stat.raw_response) %>" >
         </iframe>
       </div>
     </div>
