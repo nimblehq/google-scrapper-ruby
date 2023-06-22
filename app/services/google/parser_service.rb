@@ -7,30 +7,19 @@ module Google
     ADWORDS_CLASS = 'adwords'
 
     def initialize(html_response:)
-      raise ArgumentError, 'response.body cannot be blank' if html_response.body.blank?
-
       @html = html_response
 
-      @document = Nokogiri::HTML.parse(html_response)
-
-      # Add a class to all AdWords link for easier manipulation
-      document.css('div[data-text-ad] a[data-ved]').add_class(ADWORDS_CLASS)
-
-      # Mark footer links to identify them
-      document.css('#footcnt a').add_class('footer-links')
+      @document = Nokogiri::HTML.parse(html_response) if html_response.body
     end
 
     # Parse html data and return a hash with the results
     def call
-      {
-        top_ad_count: ads_top_count,
-        ad_count: ads_page_count,
-        non_ad_count: non_ads_result_count,
-        total_result_count: total_link_count,
-        raw_response: html,
-        result_links: result_links,
-        status: :completed
-      }
+      return unless valid?
+
+      mark_adword_links
+      mark_footer_links
+
+      present_parsed_data
     end
 
     private
@@ -74,6 +63,32 @@ module Google
 
     def result_link_map(urls, type)
       urls.map { |url| { url: url, link_type: type } }
+    end
+
+    def valid?
+      html.present? && document.present?
+    end
+
+    def mark_adword_links
+      # Add a class to all AdWords link for easier manipulation
+      document.css('div[data-text-ad] a[data-ved]').add_class(ADWORDS_CLASS)
+    end
+
+    def mark_footer_links
+      # Mark footer links to identify them
+      document.css('#footcnt a').add_class('footer-links')
+    end
+
+    def present_parsed_data
+      {
+        top_ad_count: ads_top_count,
+        ad_count: ads_page_count,
+        non_ad_count: non_ads_result_count,
+        total_result_count: total_link_count,
+        raw_response: html,
+        result_links: result_links,
+        status: :completed
+      }
     end
   end
 end
