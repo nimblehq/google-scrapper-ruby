@@ -16,7 +16,9 @@ console_command = "/rails/bin/rails console"
   DEFAULT_LOCALE = "en"
   FALLBACK_LOCALES = "en"
   RAILS_LOG_TO_STDOUT = true
-
+  DEPLOYED_HOST = 'https://google-scrapper-ruby.fly.dev'
+  RAILS_SERVE_STATIC_FILES = true
+  
 [http_service]
   internal_port = 80
   force_https = true

@@ -27,3 +27,4 @@ jobs:
         NODE_ENV: 'production'
         RUBY_ENV: 'production'
         DEPLOYED_HOST: 'https://google-scrapper-ruby.fly.dev'
+        RAILS_SERVE_STATIC_FILES: true
