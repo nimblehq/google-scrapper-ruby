@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: superfly/flyctl-actions/setup-flyctl@master
     - name: Build Docker image
-      run: bin/docker-prepare && docker compose build
+      run: bin/docker-prepare && docker compose build && bin/docker-assets-precompile
     - run: flyctl deploy
     env:
         FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
