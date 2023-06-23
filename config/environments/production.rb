@@ -99,5 +99,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.hosts << '.fly.io'
-  config.host_authorization = { }
+  config.host_authorization = { exclude: ->(_) { true } }
 end
