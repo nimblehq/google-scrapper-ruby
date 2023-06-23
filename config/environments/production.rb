@@ -99,4 +99,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.hosts << ENV['DEPLOYED_HOST']
+  config.host_authorization = { exclude: ->(request) { request.path =~ /health_check/ } }
 end
