@@ -11,5 +11,5 @@ Fabricator(:search_stat) do
   top_ad_count { rand(1..5) }
   status { rand(1..3) }
   raw_response { FFaker::HTMLIpsum.body }
-  user_id { demo_user.id }
+  user { demo_user }
 end
