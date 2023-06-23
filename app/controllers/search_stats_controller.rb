@@ -7,6 +7,6 @@ class SearchStatsController < ApplicationController
   end
 
   def show
-    @search_stat = SearchStat.includes(:result_links).find(params[:id])
+    @search_stat = current_user.search_stats.includes(:result_links).find(params[:id])
   end
 end
