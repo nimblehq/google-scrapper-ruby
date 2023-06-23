@@ -52,6 +52,9 @@ RUN if [ "$BUILD_ENV" = "test" ]; then \
 
 WORKDIR $APP_HOME
 
+# Copy ENV file
+COPY .env.example .env
+
 # Skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
 	&& { \
