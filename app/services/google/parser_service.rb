@@ -26,6 +26,32 @@ module Google
 
     attr_reader :html, :document
 
+    def valid?
+      html.present? && document.present?
+    end
+
+    def mark_adword_links
+      # Add a class to all AdWords link for easier manipulation
+      document.css('div[data-text-ad] a[data-ved]').add_class(ADWORDS_CLASS)
+    end
+
+    def mark_footer_links
+      # Mark footer links to identify them
+      document.css('#footcnt a').add_class('footer-links')
+    end
+
+    def present_parsed_data
+      {
+        top_ad_count: ads_top_count,
+        ad_count: ads_page_count,
+        non_ad_count: non_ads_result_count,
+        total_result_count: total_link_count,
+        raw_response: html,
+        result_links: result_links,
+        status: :completed
+      }
+    end
+
     def ads_top_count
       document.css("##{AD_CONTAINER_ID} .#{ADWORDS_CLASS}").count
     end
@@ -63,32 +89,6 @@ module Google
 
     def result_link_map(urls, type)
       urls.map { |url| { url: url, link_type: type } }
-    end
-
-    def valid?
-      html.present? && document.present?
-    end
-
-    def mark_adword_links
-      # Add a class to all AdWords link for easier manipulation
-      document.css('div[data-text-ad] a[data-ved]').add_class(ADWORDS_CLASS)
-    end
-
-    def mark_footer_links
-      # Mark footer links to identify them
-      document.css('#footcnt a').add_class('footer-links')
-    end
-
-    def present_parsed_data
-      {
-        top_ad_count: ads_top_count,
-        ad_count: ads_page_count,
-        non_ad_count: non_ads_result_count,
-        total_result_count: total_link_count,
-        raw_response: html,
-        result_links: result_links,
-        status: :completed
-      }
     end
   end
 end
