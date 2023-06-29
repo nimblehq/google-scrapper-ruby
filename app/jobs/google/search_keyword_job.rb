@@ -8,12 +8,7 @@ module Google
 
     def perform(search_stat_id:)
       search_stat = SearchStat.find search_stat_id
-      return unless search_stat
-
       html_result = Google::ClientService.new(keyword: search_stat.keyword).call
-
-      raise ClientServiceError unless html_result
-
       parsed_attributes = ParserService.new(html_response: html_result).call
 
       update_search_stat(search_stat, parsed_attributes)

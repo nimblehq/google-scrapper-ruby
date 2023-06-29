@@ -17,13 +17,13 @@ module Google
     def call
       result = HTTParty.get(@uri, { headers: { 'User-Agent' => USER_AGENT } })
 
-      return false unless valid_result? result
+      raise ClientServiceError unless valid_result? result
 
       result
-    rescue HTTParty::Error, Timeout::Error, SocketError => e
-      Rails.logger.error "Error: Query Google with '#{@escaped_keyword}' thrown an error: #{e}".colorize(:red)
+    rescue HTTParty::Error, Timeout::Error, SocketError, ClientServiceError => e
+      Rails.logger.error "Error: Query Google with '#{@escaped_keyword}' thrown an error: #{e}"
 
-      false
+      raise ClientServiceError, 'Error fetching HTML result'
     end
 
     private
