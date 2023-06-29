@@ -37,8 +37,19 @@ en:
   attributes:
     search_stat:
       ad_count: Ad count
+      ad_count_top: Ad count top
       keyword: Keyword
       link_count: Link count
+      non_ad_count: Non ad count
       raw_response: Raw response
       total_result_count: Total result count
       user_id: User
+  buttons:
+    back: Back
+    raw_response: View Raw Response
+  links: 
+    search_stat_details: Show Details
+  titles:
+    no_stats: No search stats found
+    non_ads: List of URLs of Non-AdWords Results on the Page
+    top_ads: List of URLs of AdWords Advertisers in Top Position
