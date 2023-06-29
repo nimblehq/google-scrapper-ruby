@@ -16,6 +16,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows doe
 # gem 'kredis' # Use Kredis to get higher-level data types in Redis
 # gem 'bcrypt' # Use Active Model has_secure_password
 gem 'devise' # Flexible authentication solution for Rails with Warden
+gem 'httparty' # A HTTP client for Ruby.
 
 # Authentications & Authorizations
 gem 'pundit' # Minimal authorization through OO design and pure Ruby classes

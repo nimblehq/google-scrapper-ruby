@@ -15,5 +15,5 @@ user = User.find_or_initialize_by(email: 'user@demo.com') do |user|
 end
 
 10.times do
-  Fabricate.times(100, :search_stat, user: user)
+  Fabricate.times(100, :search_stat_parsed_with_links, user: user)
 end
