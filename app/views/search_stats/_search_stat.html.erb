@@ -4,6 +4,6 @@
   <td><%= search_stat.link_count %></td>
   <td><%= search_stat.total_result_count %></td>
   <td>
-    <%= button_to t('buttons.search_stat_details'), search_stat_path(search_stat), method: :get, class: 'btn btn-primary' %>
+    <%= link_to t('links.search_stat_details'), search_stat_path(search_stat), class: 'btn btn-primary' %>
   </td>
 </tr>
