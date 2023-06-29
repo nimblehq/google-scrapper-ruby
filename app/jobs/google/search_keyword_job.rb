@@ -12,7 +12,7 @@ module Google
       parsed_attributes = ParserService.new(html_response: html_result).call
 
       update_search_stat(search_stat, parsed_attributes)
-    rescue ActiveRecord::RecordNotFound, ClientServiceError, ArgumentError
+    rescue ActiveRecord::RecordNotFound, ClientServiceError, ArgumentError, ActiveRecord::RecordInvalid
       update_search_stat_status search_stat, :failed
     end
 
