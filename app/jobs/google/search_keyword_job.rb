@@ -18,7 +18,7 @@ module Google
 
       update_search_stat(search_stat, parsed_attributes)
     rescue ActiveRecord::RecordNotFound, ClientServiceError, ArgumentError
-      update_keyword_status search_stat, :failed
+      update_search_stat_status search_stat, :failed
     end
 
     def update_search_stat(search_stat, attributes)
